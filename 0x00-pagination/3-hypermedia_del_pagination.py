@@ -53,11 +53,16 @@ class Server:
             current_index = 0
         j = 0
         start = current_index
-        while j < page_size:
+        size = page_size
+        # while j < page_size and start <= len(dataset_dict):
+
+        while j < size and start <= len(dataset_dict):
             if dataset_dict.get(start):
                 result.append([dataset_dict.get(start)])
             else:
-                j -= 1
+                # if data is not present, we have to maintain the page_size
+                # j-= 1
+                size += 1
             start += 1
             j += 1
         result_dict['data'] = result
