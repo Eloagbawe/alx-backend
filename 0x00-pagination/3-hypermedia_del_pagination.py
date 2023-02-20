@@ -54,9 +54,9 @@ class Server:
         j = 0
         start = current_index
         size = page_size
-        # while j < page_size and start <= len(dataset_dict):
+        # while j < page_size and start <= max(dataset_dict.keys()):
 
-        while j < size and start <= len(dataset_dict):
+        while j < size and start <= max(dataset_dict.keys()):
             if dataset_dict.get(start):
                 result.append([dataset_dict.get(start)])
             else:
