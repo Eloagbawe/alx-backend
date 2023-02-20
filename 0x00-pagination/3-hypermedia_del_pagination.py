@@ -43,10 +43,13 @@ class Server:
         """This function ensures that that if between two queries, certain rows
         are removed from the dataset, the user does not miss items from dataset
         when changing page"""
-        assert index <= len(self.dataset())
+
         result_dict: Dict = {}
         result = []
         dataset_dict = self.indexed_dataset()
+        # verify that index is in a valid range.
+        assert index <= max(dataset_dict.keys())
+        # assert index <= len(self.dataset())
         if index is not None:
             current_index = index
         else:
