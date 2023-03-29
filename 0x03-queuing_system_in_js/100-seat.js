@@ -54,7 +54,7 @@ app.get('/reserve_seat', (req, res) => {
 
 app.get('/process', (req, res) => {
   res.json({ "status": "Queue processing" });
-  queue.process('reserve_seat', 2, async (job, done) => {
+  queue.process('reserve_seat', async (job, done) => {
     const available_seats = await getCurrentAvailableSeats();
     const current_seats = (parseInt(available_seats) || 0) - 1;
     reserveSeat(current_seats);
