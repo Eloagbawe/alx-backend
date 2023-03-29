@@ -85,7 +85,7 @@ app.get('/list_products/:itemId', async (req, res) => {
 
 app.get('/reserve_product/:itemId', (req, res) => {
   const itemId = parseInt(req.params.itemId);
-  const item = getItemById(parseInt(itemId));
+  const item = getItemById(itemId);
 
   if (item) {
     if (item.stock < 1) {
